@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.net.URI;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] urls = new String[]{"https://www.facebook.com", "https://www.tesla.com", "https://www.spacex.com", "https://github.com"};
+        String[] urls = new String[]{"https://www.google.com", "https://www.facebook.com", "https://www.tesla.com", "https://www.spacex.com", "https://github.com"};
 
         ListView listView = (ListView) findViewById(R.id.listview);
 
@@ -33,10 +36,21 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String message = ((TextView)view).getText().toString();
+
                 Log.i("URL: ", message);
-                Intent intent = new Intent(getApplicationContext(), WebPage.class);
-                intent.putExtra(URL_MESSAGE, message);
-                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(message));
+
+                String title = "Please select";
+                Intent chooser = Intent.createChooser(intent, title);
+
+                if(intent.resolveActivity(getPackageManager()) != null)
+                {
+                    startActivity(chooser);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "No Activity found", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
