@@ -27,9 +27,8 @@ public class MainActivity extends AppCompatActivity {
         String[] urls = new String[]{"https://www.google.com", "https://www.facebook.com", "https://www.tesla.com", "https://www.spacex.com", "https://github.com"};
 
         ListView listView = (ListView) findViewById(R.id.listview);
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, urls);
-        listView.setAdapter(adapter);
+        MyAdapter myAdapter = new MyAdapter(urls, this);
+        listView.setAdapter(myAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
