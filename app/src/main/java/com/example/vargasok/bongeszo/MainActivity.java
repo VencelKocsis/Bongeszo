@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         String[] urls = new String[]{"https://www.google.com", "https://www.facebook.com", "https://www.tesla.com", "https://www.spacex.com", "https://github.com"};
 
-        ListView listView = (ListView) findViewById(R.id.listview);
+        final ListView listView = (ListView) findViewById(R.id.listview);
         MyAdapter myAdapter = new MyAdapter(urls, this);
         listView.setAdapter(myAdapter);
 
@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String message = ((TextView)view).getText().toString();
+
+                String message = (String) listView.getItemAtPosition(position);
+                Log.i("selectedFromList", message);
+                //String message = ((TextView)view).getText().toString();
 
                 Log.i("URL: ", message);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(message));

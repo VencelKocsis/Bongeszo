@@ -35,32 +35,35 @@ public class MyAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.list_item, parent, false);
         }
         TextView textView1 = convertView.findViewById(R.id.textView1);
-        TextView textView2 = convertView.findViewById(R.id.textView2);
         ImageView imageView = convertView.findViewById(R.id.imageView);
 
         textView1.setText(data[position]);
-        textView2.setText( String.valueOf( position ) );
 
         switch (position)
         {
             case 0:
                 imageView.setImageResource(R.drawable.google);
+                textView1.setText("Google");
                 break;
 
             case 1:
                 imageView.setImageResource(R.drawable.facebook);
+                textView1.setText("Facebook");
                 break;
 
             case 2:
                 imageView.setImageResource(R.drawable.tesla);
+                textView1.setText("Tesla");
                 break;
 
             case 3:
                 imageView.setImageResource(R.drawable.spacex);
+                textView1.setText("SpaceX");
                 break;
 
             case 4:
                 imageView.setImageResource(R.drawable.github);
+                textView1.setText("GitHub");
                 break;
 
 
