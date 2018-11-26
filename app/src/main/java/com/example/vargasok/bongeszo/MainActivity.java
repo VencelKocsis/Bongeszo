@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toast.makeText(this, "ITT A VILÁG VÉGE! ÚJRAÉLEDT AZ INTERNETEXPLORER!!!  :(", Toast.LENGTH_LONG).show();
+
         String[] urls = new String[]{"https://www.google.com", "https://www.facebook.com", "https://www.tesla.com", "https://www.spacex.com", "https://github.com"};
 
         final ListView listView = (ListView) findViewById(R.id.listview);
